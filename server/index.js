@@ -9,8 +9,9 @@ const app = express()
 const PORT = 5000
 
 app.use(express.json())
+app.use(cors())
 
-mongoose.connect(process.env.MONGODB_CONNECTION)
+mongoose.connect("mongodb+srv://AnassX7:ansx142@cluster0.dgctzrl.mongodb.net/mern-db?retryWrites=true&w=major")
 
 
 app.get('/', (req, res) => {
