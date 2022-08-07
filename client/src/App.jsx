@@ -30,6 +30,10 @@ function App(){
             users => 
             [...users, {id: response.data._id, name, age, username}])
         })
+
+        setName('')
+        setAge('')
+        setUsername('')
     }
 
     
