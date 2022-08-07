@@ -11,7 +11,7 @@ const PORT = 5000
 app.use(express.json())
 app.use(cors())
 
-mongoose.connect("mongodb+srv://AnassX7:ansx142@cluster0.dgctzrl.mongodb.net/mern-db?retryWrites=true&w=major")
+mongoose.connect(process.env.MONGODB_CONNECTION_URL)
 
 
 app.get('/getUsers', (req, res) => {

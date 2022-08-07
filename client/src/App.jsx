@@ -26,8 +26,9 @@ function App(){
             age,
             username
         }).then(response => {
-            setUsersList(users => [...users, {name, age, username}])
-            console.log(response);
+            if(name && age && username) setUsersList(
+            users => 
+            [...users, {id: response.data._id, name, age, username}])
         })
     }
 
