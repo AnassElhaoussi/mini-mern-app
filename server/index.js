@@ -14,7 +14,7 @@ app.use(cors())
 mongoose.connect("mongodb+srv://AnassX7:ansx142@cluster0.dgctzrl.mongodb.net/mern-db?retryWrites=true&w=major")
 
 
-app.get('/', (req, res) => {
+app.get('/getUsers', (req, res) => {
     UserModel.find({}, (err, result) => {
         if (err) {
             res.json(err)
@@ -22,6 +22,18 @@ app.get('/', (req, res) => {
             res.json(result)
         }
     })
+})
+
+app.post('/createUser', async(req, res) => {
+    const userInput = req.body
+    const user = new UserModel(userInput)
+
+    try {
+        await user.save()
+        res.send(user)
+    } catch {
+        res.send('Impossible')
+    }
 })
 
 app.listen(PORT, () => console.log(`App running on port ${PORT}`))
