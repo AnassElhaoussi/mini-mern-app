@@ -13,8 +13,12 @@ app.use(cors())
 
 mongoose.connect(process.env.MONGODB_CONNECTION_URL)
 
+app.get('/', (req, res) => {
+    res.send('Welcome to my Rest')
+})
 
-app.get('/getUsers', (req, res) => {
+
+app.get('/getUsers', async(req, res) => {
     UserModel.find({}, (err, result) => {
         if (err) {
             res.json(err)
